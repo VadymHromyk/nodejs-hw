@@ -1,22 +1,22 @@
-import mongoose from 'mongoose';
-import dns from 'node:dns';
+import mongoose from "mongoose";
+import dns from "node:dns";
 
 // Fix SRV DNS resolution for MongoDB Atlas
-dns.setServers(['8.8.8.8', '1.1.1.1']);
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 export const connectMongoDB = async () => {
   try {
     const mongoUrl = process.env.MONGO_URL;
 
     if (!mongoUrl) {
-      throw new Error('MONGO_URL is not defined');
+      throw new Error("MONGO_URL is not defined");
     }
 
     await mongoose.connect(mongoUrl);
 
-    console.log('✅ MongoDB connection established successfully');
+    console.log("✅ MongoDB connection established successfully");
   } catch (error) {
-    console.error('❌ Failed to connect to MongoDB:', error);
+    console.error("❌ Failed to connect to MongoDB:", error);
     process.exit(1);
   }
 };
