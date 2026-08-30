@@ -19,8 +19,10 @@ export const getAllNotes = async (req, res) => {
     });
   }
 
+  const skip = (page - 1) * perPage;
+
   const [notes, totalNotes] = await Promise.all([
-    notesQuery.clone(),
+    notesQuery.clone().skip(skip).limit(perPage),
     notesQuery.countDocuments(),
   ]);
 
