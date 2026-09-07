@@ -13,12 +13,12 @@ import {
 
 const router = Router();
 
-router.post("/register", celebrate(registerUserSchema), registerUser);
+router.post("/auth/register", celebrate(registerUserSchema), registerUser);
 
-router.post("/login", celebrate(loginUserSchema), loginUser);
+router.post("/auth/login", celebrate(loginUserSchema), loginUser);
 
-router.post("/logout", logoutUser);
+router.post("/auth/logout", logoutUser);
 
-router.post("/refresh", refreshUserSession);
+router.post("/auth/refresh", refreshUserSession);
 
 export default router;
