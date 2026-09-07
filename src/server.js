@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import pino from "pino-http";
 import "dotenv/config";
 import { connectMongoDB } from "./db/connectMongoDB.js";
 import { logger } from "./middleware/logger.js";
@@ -19,8 +18,8 @@ app.use(cors());
 app.use(cookieParser());
 app.use(logger);
 
-app.use("/auth", authRoutes);
-app.use("/", notesRouter);
+app.use(authRoutes);
+app.use(notesRouter);
 
 app.use(notFoundHandler);
 app.use(errors());
