@@ -3,7 +3,7 @@ import { model } from "mongoose";
 
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
       trim: true,
     },
@@ -30,8 +30,8 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", function () {
-  if (!this.username) {
-    this.username = this.email;
+  if (!this.name) {
+    this.name = this.email;
   }
 });
 
